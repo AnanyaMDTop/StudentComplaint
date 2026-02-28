@@ -105,6 +105,7 @@ button[type="submit"] {
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
 }
 
 button[type="submit"]:hover {
@@ -130,18 +131,25 @@ li {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Colorful Glow Shadow Effect */
+/* FIXED Gradient Border Effect */
 li::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 18px;
   padding: 2px;
+  border-radius: 18px;
   background: linear-gradient(135deg, #6366f1, #06b6d4, #ec4899);
+  
+  /* Safari/Chrome */
   -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
+  -webkit-mask-composite: source-out;
+  
+  /* Firefox/Modern Chrome */
+  mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask-composite: exclude;
 }
 
@@ -191,6 +199,13 @@ table {
 th, td {
   padding: 1rem;
   border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+th {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  font-weight: 600;
+  color: #1e293b;
 }
 
 tr:hover {
@@ -202,15 +217,19 @@ tr:hover {
   nav {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   form {
     width: 100%;
+    padding: 1.5rem;
   }
 
   table {
     display: block;
     overflow-x: auto;
+    white-space: nowrap;
   }
 }
 
@@ -225,5 +244,9 @@ tr:hover {
 
   li {
     padding: 1rem;
+  }
+
+  nav {
+    padding: 0.8rem;
   }
 }

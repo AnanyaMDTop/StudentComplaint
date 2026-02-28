@@ -1,23 +1,46 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: #1e293b;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
 /* ===== APP WRAPPER ===== */
 .app-container {
-  padding: 2rem;
+  padding: 2rem 1rem;
   min-height: 100vh;
   animation: fadeIn 0.6s ease-in-out;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* ===== GLASS NAVBAR ===== */
 nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 1rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1.2rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
   display: flex;
   align-items: center;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
-  transition: 0.3s ease;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav:hover {
+  box-shadow: 0 25px 50px rgba(99, 102, 241, 0.25);
 }
 
 nav a {
@@ -25,22 +48,30 @@ nav a {
   font-weight: 600;
   color: #334155;
   position: relative;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
 }
 
 nav a::after {
   content: "";
   position: absolute;
   width: 0%;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(135deg, #6366f1, #ec4899);
-  left: 0;
-  bottom: -4px;
-  transition: 0.3s ease;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
 nav a:hover::after {
   width: 100%;
+}
+
+nav a:hover {
+  color: #6366f1;
+  transform: translateY(-1px);
 }
 
 nav button {
@@ -48,61 +79,71 @@ nav button {
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
 
 nav button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.5);
 }
 
 /* ===== PAGE HEADINGS ===== */
 h1, h2 {
-  margin-bottom: 1rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  
+  /* Fixed gradient text */
+  background: linear-gradient(135deg, #6366f1, #06b6d4, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ===== FORM STYLING ===== */
 form {
-  background: white;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-  margin: 1.5rem 0;
-  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  max-width: 550px;
+  margin: 2rem auto;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 form:hover {
-  box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 35px 60px rgba(99, 102, 241, 0.25);
+  transform: translateY(-2px);
 }
 
 form div {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 label {
   font-weight: 600;
   color: #475569;
   display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
 }
 
 input,
 select,
 textarea {
   width: 100%;
-  padding: 0.75rem;
-  border-radius: 10px;
-  border: 1px solid #cbd5e1;
-  transition: 0.3s;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 input:focus,
@@ -111,82 +152,101 @@ textarea:focus {
   outline: none;
   border-color: #6366f1;
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  background: white;
+  transform: translateY(-1px);
 }
 
 button[type="submit"] {
   background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: white;
   border: none;
-  padding: 0.8rem;
-  border-radius: 12px;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
   width: 100%;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 button[type="submit"]:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.5);
 }
 
 /* ===== TABLE DESIGN ===== */
 table {
   width: 100%;
-  background: white;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
   overflow: hidden;
   border-collapse: collapse;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  margin-top: 1.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  margin: 2rem 0;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 th {
   background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: white;
-  padding: 1rem;
+  padding: 1.2rem;
   text-align: left;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 td {
-  padding: 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 1.2rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  transition: background 0.2s ease;
 }
 
 tr:hover {
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.8);
 }
 
 /* ===== STATUS BADGES ===== */
 .status-pending {
-  background: #fef3c7;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
   color: #92400e;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
 }
 
 .status-in-progress {
-  background: #dbeafe;
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
   color: #1e40af;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
 }
 
 .status-resolved {
-  background: #dcfce7;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
   color: #166534;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -194,33 +254,83 @@ tr:hover {
   }
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .app-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  nav {
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .app-container {
+    padding: 1rem 0.5rem;
+  }
+  
   nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
   }
-
+  
   nav button {
     margin-left: 0;
+    width: 100%;
   }
-
+  
+  form {
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+  
   table {
     display: block;
     overflow-x: auto;
+    white-space: nowrap;
+    margin: 1rem 0;
   }
-
-  form {
-    width: 100%;
+  
+  th, td {
+    min-width: 120px;
   }
 }
 
 @media (max-width: 480px) {
-  .app-container {
-    padding: 1rem;
-  }
-
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  form {
+    padding: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  input, select, textarea {
+    padding: 0.9rem;
+  }
+  
+  nav {
+    padding: 0.8rem;
+    border-radius: 16px;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background: white;
+  }
+  
+  nav, form {
+    box-shadow: none;
   }
 }
