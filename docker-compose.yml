@@ -26,6 +26,11 @@ services:
     restart: unless-stopped
     expose:
       - "5000"
+    healthcheck:  # Optional: better dependency handling
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   # ------------------- Frontend -------------------
   frontend:
@@ -34,8 +39,6 @@ services:
     networks:
       - hostelops-net
     restart: unless-stopped
-    expose:
-      - "80"
 
   # ------------------- Nginx Reverse Proxy -------------------
   proxy:
@@ -43,14 +46,17 @@ services:
     container_name: hostelops-proxy
     restart: unless-stopped
     ports:
-      - "80:80"      # public HTTP
+      - "80:80"
     volumes:
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - frontend-build:/var/www/html:ro  # Mount frontend build output
     networks:
       - hostelops-net
     depends_on:
-      - backend
-      - frontend
+      backend:
+        condition: service_healthy  # Wait for backend
+      frontend:
+        condition: service_completed_successfully  # Or service_started
 
 # ------------------- Networks -------------------
 networks:
@@ -60,3 +66,4 @@ networks:
 # ------------------- Volumes -------------------
 volumes:
   mongo-data:
+  frontend-build:  # Named volume for frontend static files
