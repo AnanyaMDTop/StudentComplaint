@@ -1,104 +1,81 @@
-/* ===== RESET & BASE ===== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8fafc;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
   color: #1e293b;
-  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== MAIN CONTAINER ===== */
+#root {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1.5rem;
 }
 
 /* ===== NAVBAR ===== */
 nav {
   background: white;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   display: flex;
   gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
 }
 
 nav a {
   text-decoration: none;
   color: #334155;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: 0.3s ease;
 }
 
 nav a:hover {
   color: #2563eb;
 }
 
-nav span {
-  color: #475569;
-  margin-right: auto;
-}
-
 nav button {
-  background: #ef4444;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
   border: none;
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s;
+  transition: 0.3s;
 }
 
 nav button:hover {
-  background: #dc2626;
-}
-
-/* ===== MAIN CONTAINER ===== */
-div:has(> h1, > h2, > form, > table) {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
 }
 
 /* ===== HEADINGS ===== */
 h1 {
   font-size: 2rem;
-  font-weight: 600;
-  color: #0f172a;
   margin-bottom: 1.5rem;
-  border-bottom: 3px solid #2563eb;
-  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #6366f1;
   display: inline-block;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.3rem;
 }
 
 /* ===== FORMS ===== */
 form {
   background: white;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+  margin-bottom: 2rem;
   max-width: 500px;
-  margin: 2rem 0;
-}
-
-form div {
-  margin-bottom: 1.2rem;
-}
-
-label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-  color: #334155;
 }
 
 input,
@@ -106,194 +83,147 @@ select,
 textarea {
   width: 100%;
   padding: 0.7rem;
-  border: 1px solid #cbd5e1;
   border-radius: 8px;
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 1rem;
+  transition: 0.3s;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-textarea {
-  min-height: 100px;
-  resize: vertical;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 button[type="submit"] {
-  background: #2563eb;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.8rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.2s;
-  width: 100%;
+  transition: 0.3s;
 }
 
 button[type="submit"]:hover {
-  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
 }
 
-/* ===== TABLES ===== */
-table {
-  width: 100%;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-}
-
-th {
-  background: #f1f5f9;
-  text-align: left;
-  padding: 1rem;
-  font-weight: 600;
-  color: #334155;
-  border-bottom: 2px solid #cbd5e1;
-}
-
-td {
-  padding: 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  color: #1e293b;
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tr:hover {
-  background: #f8fafc;
-}
-
-/* status badges */
-td span[style*="fontWeight: 'bold'"] {
-  display: inline-block;
-  padding: 0.2rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-/* status colors – add these via JS or extend CSS */
-.status-pending { background: #fef9c3; color: #854d0e; }
-.status-in-progress { background: #dbeafe; color: #1e40af; }
-.status-resolved { background: #dcfce7; color: #166534; }
-
-/* ===== FILTER BAR ===== */
-div:has(> label + select) {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  margin-bottom: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-div:has(> label + select) label {
-  margin-bottom: 0;
-  margin-right: 0.3rem;
-}
-
-div:has(> label + select) select {
-  width: auto;
-  min-width: 150px;
-}
-
-/* ===== CARDS FOR COMPLAINTS (student view) ===== */
+/* ===== CARDS (Complaint View) ===== */
 ul {
   list-style: none;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 li {
   background: white;
-  padding: 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1.5rem;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Colorful Glow Shadow Effect */
+li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4, #ec4899);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.3);
 }
 
-li strong {
-  font-size: 1.1rem;
-  color: #0f172a;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-li p {
-  color: #475569;
-  margin: 0.5rem 0;
-}
-
-li small {
-  color: #64748b;
+/* ===== STATUS BADGES ===== */
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
   font-size: 0.85rem;
-  display: block;
-  margin-top: 0.5rem;
+  font-weight: 600;
 }
 
-/* ===== ALERTS & MESSAGES ===== */
-p[style*="color: red"] {
-  background: #fee2e2;
-  color: #b91c1c !important;
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #fecaca;
-  margin-bottom: 1rem;
+.status-in-progress {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-p[style*="color: green"] {
+.status-resolved {
   background: #dcfce7;
-  color: #166534 !important;
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #bbf7d0;
-  margin-bottom: 1rem;
+  color: #166534;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
+/* ===== TABLE RESPONSIVE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+th, td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover {
+  background: #f1f5ff;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
   nav {
     flex-direction: column;
-    align-items: stretch;
-    gap: 0.8rem;
+    align-items: flex-start;
   }
-  
+
+  form {
+    width: 100%;
+  }
+
   table {
     display: block;
     overflow-x: auto;
   }
-  
-  div:has(> label + select) {
-    flex-direction: column;
-    align-items: flex-start;
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 1rem;
   }
-  
-  div:has(> label + select) select {
-    width: 100%;
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  li {
+    padding: 1rem;
   }
 }
