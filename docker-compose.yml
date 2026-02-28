@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # ------------------- MongoDB -------------------
   db:
     image: mongo:latest
     container_name: hostelops-db
@@ -10,6 +11,7 @@ services:
       - hostelops-net
     restart: unless-stopped
 
+  # ------------------- Backend -------------------
   backend:
     build: ./backend
     container_name: hostelops-backend
@@ -25,18 +27,36 @@ services:
     expose:
       - "5000"
 
+  # ------------------- Frontend -------------------
   frontend:
     build: ./frontend
     container_name: hostelops-frontend
     networks:
       - hostelops-net
     restart: unless-stopped
-    ports:
-      - "80:80"
+    expose:
+      - "80"
 
+  # ------------------- Nginx Reverse Proxy -------------------
+  proxy:
+    image: nginx:alpine
+    container_name: hostelops-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"      # public HTTP
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - hostelops-net
+    depends_on:
+      - backend
+      - frontend
+
+# ------------------- Networks -------------------
 networks:
   hostelops-net:
     driver: bridge
 
+# ------------------- Volumes -------------------
 volumes:
   mongo-data:
